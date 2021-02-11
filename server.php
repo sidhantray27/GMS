@@ -112,7 +112,7 @@ if (isset($_POST['reg_complain'])) {
     $userid = mysqli_fetch_assoc($result)['id'];
 
     $query = "INSERT INTO complaint (userid, type, details, outcome, status , position) 
-            VALUES('$userid', '$type', '$details', '$outcome', 'open','admin_0')";
+            VALUES('$userid', '$type', '$details', '$outcome', 'open','admin0')";
     mysqli_query($db, $query);
     //<script language="javascript">
     //alert("Your Complain is lodged successfully") ;
@@ -121,17 +121,19 @@ if (isset($_POST['reg_complain'])) {
   }
 }
 
-//complain history
-/*if(isset($_POST['complainhistory'])){
+if (isset($_POST['save'])) {
+  // receive all input values from the form
+  $status = mysqli_real_escape_string($db, $_POST['updatestatus']);
+  $position = mysqli_real_escape_string($db, $_POST['forward']);
+  $id = $_SESSION['id'];
 
-  $username = mysqli_real_escape_string($db, $_SESSION['username']);
-  $query1 = "SELECT * FROM users WHERE name= '$username'";
-  $results1 = mysqli_query($db, $query1);
-  $id=mysqli_fetch_assoc( $results1 )['id'];
-  $query = "SELECT * FROM complaint WHERE userid='$id'";
-  $result = mysqli_query($db, $query);
-  header('location: complainhistory.php');
-  
-}*/
+
+  $complaint_update_query ="UPDATE complaint SET status = '$status' ,position = '$position' WHERE complaintid = '$id'";
+  $result = mysqli_query($db, $complaint_update_query);
+
+    //<script language="javascript">
+    //alert("Your Complain is lodged successfully") ;
+    //</script>
+}
 
 ?>
