@@ -23,6 +23,7 @@
       <thead>
           <tr>
           <th>Complaint Id</th>
+          <th>Complaint Title</th>
           <th>Complaint Type</th>
           <th>status</th>
           <th>View Details</th>
@@ -37,7 +38,7 @@
           }else{
               while( $row = mysqli_fetch_assoc( $result ) ){
                   $id = $row['complaintid'];
-              echo "<tr><td>{$row['complaintid']}</td><td>{$row['type']}</td><td>{$row['status']}</td>
+              echo "<tr><td>{$row['complaintid']}</td><td>{$row['title']}</td><td>{$row['type']}</td><td>{$row['status']}</td>
               <td><a href='details.php?cid=$id'>View Details</td><td>{$row['updationdate']}</td></tr>\n";
               }
               

@@ -26,6 +26,7 @@
       <thead>
           <tr>
           <th>Complaint Id</th>
+          <th>Complaint Title</th>
           <th>Complaint Type</th>
           <th>Complaint Details</th>
           <th>Registration Date</th>
@@ -42,7 +43,7 @@
               echo '<tr><td colspan="4">No complaints Found</td></tr>';
           }else{
               while( $row = mysqli_fetch_assoc( $result ) ){
-              echo "<tr><td>{$row['complaintid']}</td><td>{$row['type']}</td><td>{$row['details']}</td><td>{$row['regdate']}</td><td>{$row['status']}</td><td>{$row['position']}</td><td>{$row['updationdate']}</td><td>{$row['remarks']}</td></tr>\n";
+              echo "<tr><td>{$row['complaintid']}</td><td>{$row['title']}</td><td>{$row['type']}</td><td>{$row['details']}</td><td>{$row['regdate']}</td><td>{$row['status']}</td><td>{$row['position']}</td><td>{$row['updationdate']}</td><td>{$row['remarks']}</td></tr>\n";
               }
           }
           ?>
