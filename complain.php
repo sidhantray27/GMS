@@ -13,9 +13,7 @@
   <form method="post" action="complain.php">
     <?php include('errors.php'); ?>
     <div class="input-group">
-      <label>Username</label>
-      <input type="text" name="username" value="<?php echo $username; ?>">
-    </div>
+      
     <div class="input-group">
       <label>Complain type</label>
         <input type="radio" name="type"
@@ -25,17 +23,21 @@
         <?php if (isset($type) && $type=="complain") echo "checked";?>
         value="complain">Complain
     </div>
+    <label>Complaint Title:</label>
+      <input type="text" name="title">
+    </div>
     <div class="input-group">
       <label>Complaint Details</label>
       <input type="text" name="details">
     </div>
     <div class="input-group">
-      <label>Desired Outcome</label>
-      <input type="text" name="outcome">
-    </div>
-    <div class="input-group">
       <button type="submit" class="btn" name="reg_complain">SEND</button>
     </div>
   </form>
+  <form method="post" action="user_dashboard.php">
+    <div class="input-group">
+  		<button type="submit" class="btn" name="back">BACK</button>
+  	</div>
+    </form>
 </body>
 </html>
