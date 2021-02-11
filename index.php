@@ -15,6 +15,8 @@
 <html>
 <head>
     <title>Home</title>
+      <?php include('partials.php') ?>
+
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>

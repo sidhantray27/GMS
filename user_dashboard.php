@@ -3,29 +3,30 @@
 <html>
 <head>
   <title>User Dashboard</title>
+  <?php include('partials.php') ?>
+
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <div class="header">
-  <?php  if (isset($_SESSION['username'])) : ?>
-        <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-    <?php endif ?>
-  </div>
-  <form method="post" action="complain.php">
-  	<?php include('errors.php'); ?>
-  	<div class="input-group">
-  		<button type="submit" class="btn" name="lodgecomplain">Lodge Complain</button>
-  	</div>
-  </form>
-  <form method="post" action="complainhistory.php">
-      <div class="input-group">
-  		<button type="submit" class="btn" name="complainhistory">complain History</button>
-  	</div>
-  </form>
-  <form method="post" action="login.php">
-    <div class="input-group">
-  		<button type="submit" class="btn" name="logout">LOG OUT</button>
-  	</div>
-  </form>
+  <div class="container">
+    <div class="user-container">
+      <div class="mb-3">
+
+        <?php  if (isset($_SESSION['username'])) : ?>
+              <h2>Welcome <strong><?php echo $_SESSION['username']; ?></strong></h2>
+          <?php endif ?>
+      </div>
+        <div class="my-3">
+
+          <a href="complain.php" class="btn btn-primary btn-lg">Lodge Complain</a>
+        </div>
+        <div class="my-3">
+
+          <a href="complainhistory.php" class="btn btn-primary btn-lg">Complain History</a>
+        </div>
+
+        <a href="login.php">Logout</a>
+      </div>
+    </div>
 </body>
 </html>

@@ -2,30 +2,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Registration system PHP and MySQL</title>
+  <title>GMS | Login</title>
+    <?php include('partials.php') ?>
+
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <div class="header">
-  	<h2>Login</h2>
-  </div>
+	<div class="container">
+		<div class="form-container">
+			<div class="text-center">
+				<h1>Login</h1>
+			</div>
+			<form method="post" action="login.php">
+				<?php include('errors.php'); ?>
+				<div class="form-group mb-3">
+					<label class="form-label">Username</label>
+					<input class="form-control" type="text" name="username" placeholder="Username">
+				</div>
+				<div class="form-group mb-3">
+					<label class="form-label">Password</label>
+					<input class="form-control" type="password" name="password" placeholder="Password">
+				</div>
+				<div>
+					<button type="submit" class="btn btn-primary" name="login_user">Login</button>
+				</div>
+				<p class="my-3">
+					Not yet a member? <a href="register.php">Sign up</a>
+				</p>
+			</form>
+		</div>
+	</div>
+
 	 
-  <form method="post" action="login.php">
-  	<?php include('errors.php'); ?>
-  	<div class="input-group">
-  		<label>Username</label>
-  		<input type="text" name="username" >
-  	</div>
-  	<div class="input-group">
-  		<label>Password</label>
-  		<input type="password" name="password">
-  	</div>
-  	<div class="input-group">
-  		<button type="submit" class="btn" name="login_user">Login</button>
-  	</div>
-  	<p>
-  		Not yet a member? <a href="register.php">Sign up</a>
-  	</p>
-  </form>
 </body>
 </html>
