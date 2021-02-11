@@ -47,12 +47,12 @@ if (isset($_POST['reg_user'])) {
   if (count($errors) == 0) {
   	$password = md5($password_1);//encrypt the password before saving in the database
 
-  	$query = "INSERT INTO users (name, mailid, password, contact) 
-  			  VALUES('$username', '$email', '$password', '$phone')";
+  	$query = "INSERT INTO users (name, mailid, password, contact,type) 
+  			  VALUES('$username', '$email', '$password', '$phone','user')";
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
   	$_SESSION['success'] = "You are now logged in";
-  	header('location: index.php');
+  	header('location: login.php');
   }
 }
 
@@ -78,11 +78,60 @@ if (isset($_POST['login_user'])) {
     if (mysqli_num_rows($results) == 1) {
       $_SESSION['username'] = $username;
       $_SESSION['success'] = "You are now logged in";
-      header('location: index.php');
+      if (mysqli_fetch_assoc($results)['type'] == 'user' ){
+        header('location: user_dashboard.php');
+      }
+      else{
+        header('location: admin_dashboard.php');
+      }
+      
     }else {
       array_push($errors, "Wrong username/password combination");
     }
   }
 }
+
+//Complain Register
+
+if (isset($_POST['reg_complain'])) {
+  // receive all input values from the form
+  $username = mysqli_real_escape_string($db, $_POST['username']);
+  $type = mysqli_real_escape_string($db, $_POST['type']);
+  $details = mysqli_real_escape_string($db, $_POST['details']);
+  $outcome = mysqli_real_escape_string($db, $_POST['outcome']);
+  //$phone = mysqli_real_escape_string($db, $_POST['phone']);
+
+  if (empty($username)) { array_push($errors, "Username is required"); }
+  if (empty($type)) { array_push($errors, "Complain Type is required"); }
+  if (empty($details)) { array_push($errors, "Complain Details is required"); }
+
+  if (count($errors) == 0) {
+
+    $user_check_query = "SELECT * FROM users WHERE name='$username' ";
+    $result = mysqli_query($db, $user_check_query);
+    $userid = mysqli_fetch_assoc($result)['id'];
+
+    $query = "INSERT INTO complaint (userid, type, details, outcome, status , position) 
+            VALUES('$userid', '$type', '$details', '$outcome', 'open','admin_0')";
+    mysqli_query($db, $query);
+    //<script language="javascript">
+    //alert("Your Complain is lodged successfully") ;
+    //</script>
+    header('location: user_dashboard.php');
+  }
+}
+
+//complain history
+/*if(isset($_POST['complainhistory'])){
+
+  $username = mysqli_real_escape_string($db, $_SESSION['username']);
+  $query1 = "SELECT * FROM users WHERE name= '$username'";
+  $results1 = mysqli_query($db, $query1);
+  $id=mysqli_fetch_assoc( $results1 )['id'];
+  $query = "SELECT * FROM complaint WHERE userid='$id'";
+  $result = mysqli_query($db, $query);
+  header('location: complainhistory.php');
+  
+}*/
 
 ?>
