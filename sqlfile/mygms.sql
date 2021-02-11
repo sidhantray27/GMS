@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2021 at 03:44 PM
+-- Generation Time: Feb 11, 2021 at 04:47 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -31,8 +31,8 @@ CREATE TABLE `complaint` (
   `complaintid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `type` varchar(100) NOT NULL,
+  `title` text NOT NULL,
   `details` text NOT NULL,
-  `outcome` text NOT NULL,
   `regdate` datetime NOT NULL DEFAULT current_timestamp(),
   `status` varchar(20) NOT NULL,
   `position` varchar(20) NOT NULL,
@@ -44,11 +44,12 @@ CREATE TABLE `complaint` (
 -- Dumping data for table `complaint`
 --
 
-INSERT INTO `complaint` (`complaintid`, `userid`, `type`, `details`, `outcome`, `regdate`, `status`, `position`, `updationdate`, `remarks`) VALUES
-(1, 4, 'gquery', 'how & why', '', '2021-02-11 12:38:55', 'solved', 'admin0', '2021-02-11 20:09:10', 'by this and due to this'),
-(2, 4, 'complain', 'ask hii', '', '2021-02-11 13:01:31', 'open', 'admin0', '2021-02-11 14:31:32', ''),
-(3, 4, 'gquery', 'hello', '', '2021-02-11 14:34:32', 'in process', 'admin1', '2021-02-11 15:04:01', ''),
-(4, 5, 'gquery', 'asdfg', '', '2021-02-11 14:35:04', 'solved', 'admin0', '2021-02-11 15:04:24', '');
+INSERT INTO `complaint` (`complaintid`, `userid`, `type`, `title`, `details`, `regdate`, `status`, `position`, `updationdate`, `remarks`) VALUES
+(1, 4, 'gquery', '', 'how & why', '2021-02-11 12:38:55', 'solved', 'admin0', '2021-02-11 20:09:10', 'by this and due to this'),
+(2, 4, 'complain', '', 'ask hii', '2021-02-11 13:01:31', 'open', 'admin0', '2021-02-11 14:31:32', ''),
+(3, 4, 'gquery', '', 'hello', '2021-02-11 14:34:32', 'in process', 'admin1', '2021-02-11 15:04:01', ''),
+(4, 5, 'gquery', '', 'asdfg', '2021-02-11 14:35:04', 'solved', 'admin0', '2021-02-11 15:04:24', ''),
+(5, 4, 'gquery', 'Agrochain', 'hello', '2021-02-11 21:06:53', 'open', 'admin0', '2021-02-11 21:06:53', '');
 
 -- --------------------------------------------------------
 
@@ -104,7 +105,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `complaint`
 --
 ALTER TABLE `complaint`
-  MODIFY `complaintid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `complaintid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`

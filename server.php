@@ -95,13 +95,13 @@ if (isset($_POST['login_user'])) {
 
 if (isset($_POST['reg_complain'])) {
   // receive all input values from the form
-  $username = mysqli_real_escape_string($db, $_POST['username']);
+  $title = mysqli_real_escape_string($db, $_POST['title']);
   $type = mysqli_real_escape_string($db, $_POST['type']);
   $details = mysqli_real_escape_string($db, $_POST['details']);
-  $outcome = mysqli_real_escape_string($db, $_POST['outcome']);
+  $username = $_SESSION['username'];
   //$phone = mysqli_real_escape_string($db, $_POST['phone']);
 
-  if (empty($username)) { array_push($errors, "Username is required"); }
+  if (empty($title)) { array_push($errors, "Complaint Title is required"); }
   if (empty($type)) { array_push($errors, "Complain Type is required"); }
   if (empty($details)) { array_push($errors, "Complain Details is required"); }
 
@@ -111,8 +111,8 @@ if (isset($_POST['reg_complain'])) {
     $result = mysqli_query($db, $user_check_query);
     $userid = mysqli_fetch_assoc($result)['id'];
 
-    $query = "INSERT INTO complaint (userid, type, details, outcome, status , position) 
-            VALUES('$userid', '$type', '$details', '$outcome', 'open','admin0')";
+    $query = "INSERT INTO complaint (userid, type, details, title, status , position) 
+            VALUES('$userid', '$type', '$details', '$title', 'open','admin0')";
     mysqli_query($db, $query);
     //<script language="javascript">
     //alert("Your Complain is lodged successfully") ;
