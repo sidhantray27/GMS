@@ -125,10 +125,11 @@ if (isset($_POST['save'])) {
   // receive all input values from the form
   $status = mysqli_real_escape_string($db, $_POST['updatestatus']);
   $position = mysqli_real_escape_string($db, $_POST['forward']);
+  $remark = mysqli_real_escape_string($db, $_POST['remark']);
   $id = $_SESSION['id'];
 
 
-  $complaint_update_query ="UPDATE complaint SET status = '$status' ,position = '$position' WHERE complaintid = '$id'";
+  $complaint_update_query ="UPDATE complaint SET status = '$status' ,position = '$position', remarks = '$remark' WHERE complaintid = '$id'";
   $result = mysqli_query($db, $complaint_update_query);
 
     //<script language="javascript">

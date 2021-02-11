@@ -28,6 +28,7 @@
         <th>status</th>
         <th>position</th>
         <th>Last Updation Date</th>
+        <th>Remarks/Solution</th>
 
         </tr>
     </thead>
@@ -37,7 +38,7 @@
             echo '<tr><td colspan="4">No complaints Found</td></tr>';
         }else{
             while( $row = mysqli_fetch_assoc( $result ) ){
-            echo "<tr><td>{$row['complaintid']}</td><td>{$row['type']}</td><td>{$row['details']}</td><td>{$row['regdate']}</td><td>{$row['status']}</td><td>{$row['position']}</td><td>{$row['updationdate']}</td></tr>\n";
+            echo "<tr><td>{$row['complaintid']}</td><td>{$row['type']}</td><td>{$row['details']}</td><td>{$row['regdate']}</td><td>{$row['status']}</td><td>{$row['position']}</td><td>{$row['updationdate']}</td><td>{$row['remarks']}</td></tr>\n";
             }
         }
         ?>
@@ -60,6 +61,10 @@
         <option value="admin1">admin1</option>
         <option value="admin2">admin2</option>
         </select>
+  	</div>
+    <div class="input-group">
+      <label>Remarks/Solutions :</label>
+  		<input type="text"  name="remark">
   	</div>
     <div class="input-group">
   		<button type="submit" class="btn" name="save">SAVE</button>

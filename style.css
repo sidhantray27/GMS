@@ -5,6 +5,10 @@
 body {
   font-size: 120%;
   background: #F8F8FF;
+  background-image: url('img/bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
 }
 
 .header {
