@@ -8,7 +8,6 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <h1> GREIVANCE <br> MANAGEMENT SYSTEM</h1>
   <div class="container" style="border: 1px solid lightgrey; border-radius: 5px;">
 
     <div class="text-center my-3">

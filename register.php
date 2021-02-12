@@ -7,7 +7,6 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <h1> GREIVANCE <br> MANAGEMENT SYSTEM</h1>
   <div class="container">
     <div class="form-container">
 

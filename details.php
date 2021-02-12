@@ -8,11 +8,10 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <h1> GREIVANCE <br> MANAGEMENT SYSTEM</h1>
   <div class="container">
 
     <div class="text-center my-3">
-      <h2>Complaint Details</h2>
+      <h1>Complaint Details</h1>
     </div>
   
     <?php
@@ -31,18 +30,21 @@
           <?php include('errors.php'); ?>
           <div class="form-group mb-3">
               <?php
-                echo "<h6>Complaint ID : {$row['complaintid']} &emsp; Status : {$row['status']} &emsp; Position : {$row['position']}</h6>";
-                echo "<h4>Complaint Title : {$row['title']}</h4>";
-                echo "<h6>Complaint Details :</h6><p>&emsp; {$row['details']}</p>";
-                echo "<h6>Remarks/Solution : {$row['remarks']}</h6><br>";
+                echo "<h2>{$row['title']}</h3>";
+                echo "<p>{$row['details']}</p>";
+                // echo "<p>Remarks/Solution : {$row['remarks']}</p>";
               ?>
           </div>
           <div class="form-group mb-3">
             <label class="form-label" for="updatestatus">Update Status:</label>
               <select class="form-control" name="updatestatus" id="updatestatus">
-              <option value="open">Open</option>
-              <option value="in process">In Process</option>
-              <option value="solved">solved</option>
+              <option value="open" <?php if ($row['status'] == 'open')
+                echo "selected"
+              ?> >Open</option>
+              <option value="in process"<?php if ($row['status'] == 'in process')
+                echo "selected" ?> >In Process</option>
+              <option value="solved" <?php if ($row['status'] == 'solved')
+                echo "selected" ?> >solved</option>
               </select>
           </div>
           <div class="form-group mb-3">
@@ -55,7 +57,7 @@
           </div>
           <div class="form-group mb-3">
             <label class="form-label">Remarks/Solutions :</label>
-            <input class="form-control" type="text"  name="remark" placeholder="Remark">
+            <input class="form-control" type="text"  name="remark" placeholder="Remark" value="<?php echo $row['remarks'] ?>">
           </div>
           <div class="my-3">
             <button type="submit" class="btn btn-primary" name="save">SAVE</button>
