@@ -128,9 +128,20 @@ if (isset($_POST['save'])) {
   $remark = mysqli_real_escape_string($db, $_POST['remark']);
   $id = $_SESSION['id'];
 
+  if (!empty($status)) { 
+    $complaint_update_query ="UPDATE complaint SET status = '$status' WHERE complaintid = '$id'";
+    $result = mysqli_query($db, $complaint_update_query);
+  }
 
-  $complaint_update_query ="UPDATE complaint SET status = '$status' ,position = '$position', remarks = '$remark' WHERE complaintid = '$id'";
-  $result = mysqli_query($db, $complaint_update_query);
+  if (!empty($position)) { 
+    $complaint_update_query ="UPDATE complaint SET position = '$position' WHERE complaintid = '$id'";
+    $result = mysqli_query($db, $complaint_update_query);
+  }
+
+  if (!empty($remark)) { 
+    $complaint_update_query ="UPDATE complaint SET remarks = '$remark' WHERE complaintid = '$id'";
+    $result = mysqli_query($db, $complaint_update_query);
+  }
 
     //<script language="javascript">
     //alert("Your Complain is lodged successfully") ;

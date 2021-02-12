@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+  <h1> GREIVANCE <br> MANAGEMENT SYSTEM</h1>
   <div class="container" style="border: 1px solid lightgrey; border-radius: 5px;">
 
     <div class="text-center my-3">
@@ -48,7 +49,7 @@
       </table>
       <div class="my-3">
 
-        <a href="login.php">logout</a>
+        <a href="login.php?logout='1'">logout</a>
       </div>
   </div>
 </body>

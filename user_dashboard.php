@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+  <h1> GREIVANCE <br> MANAGEMENT SYSTEM</h1>
   <div class="container">
     <div class="user-container">
       <div class="mb-3">
@@ -25,7 +26,7 @@
           <a href="complainhistory.php" class="btn btn-primary btn-lg">Complain History</a>
         </div>
 
-        <a href="login.php">Logout</a>
+        <a href="login.php?logout='1'">Logout</a>
       </div>
     </div>
 </body>

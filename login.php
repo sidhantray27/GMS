@@ -3,11 +3,19 @@
 <html>
 <head>
   <title>GMS | Login</title>
-    <?php include('partials.php') ?>
+    <?php 
+		include('partials.php') ;
+		if (isset($_GET['logout'])) {
+			session_destroy();
+			unset($_SESSION['username']);
+			header("location: login.php");
+	  }
+	?>
 
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	  <h1> WELCOME TO GREIVANCE MANAGEMENT SYSTEM</h1>
 	<div class="container">
 		<div class="form-container">
 			<div class="text-center">

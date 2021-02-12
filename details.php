@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+  <h1> GREIVANCE <br> MANAGEMENT SYSTEM</h1>
   <div class="container">
 
     <div class="text-center my-3">
@@ -21,38 +22,21 @@
       $query = "SELECT * FROM complaint WHERE complaintid='$id'";
       $result = mysqli_query($db, $query);
       $_SESSION['id']= $id;
-    ?>
-      <table class="table">
-      <thead>
-          <tr>
-          <th>Complaint Id</th>
-          <th>Complaint Title</th>
-          <th>Complaint Type</th>
-          <th>Complaint Details</th>
-          <th>Registration Date</th>
-          <th>status</th>
-          <th>position</th>
-          <th>Last Updation Date</th>
-          <th>Remarks/Solution</th>
-  
-          </tr>
-      </thead>
-      <tbody>
-          <?php
-          if( mysqli_num_rows( $result )==0 ){
-              echo '<tr><td colspan="4">No complaints Found</td></tr>';
-          }else{
-              while( $row = mysqli_fetch_assoc( $result ) ){
-              echo "<tr><td>{$row['complaintid']}</td><td>{$row['title']}</td><td>{$row['type']}</td><td>{$row['details']}</td><td>{$row['regdate']}</td><td>{$row['status']}</td><td>{$row['position']}</td><td>{$row['updationdate']}</td><td>{$row['remarks']}</td></tr>\n";
-              }
-          }
-          ?>
-      </tbody>
-      </table>
+      $row = mysqli_fetch_assoc( $result ) 
+              //echo "<tr><td>{$row['complaintid']}</td><td>{$row['title']}</td><td>{$row['type']}</td><td>{$row['details']}</td><td>{$row['regdate']}</td><td>{$row['status']}</td><td>{$row['position']}</td><td>{$row['updationdate']}</td><td>{$row['remarks']}</td></tr>\n";
+      ?>
       <div class="form-container">
 
         <form method="post" action="details.php">
           <?php include('errors.php'); ?>
+          <div class="form-group mb-3">
+              <?php
+                echo "<h6>Complaint ID : {$row['complaintid']} &emsp; Status : {$row['status']} &emsp; Position : {$row['position']}</h6>";
+                echo "<h4>Complaint Title : {$row['title']}</h4>";
+                echo "<h6>Complaint Details :</h6><p>&emsp; {$row['details']}</p>";
+                echo "<h6>Remarks/Solution : {$row['remarks']}</h6><br>";
+              ?>
+          </div>
           <div class="form-group mb-3">
             <label class="form-label" for="updatestatus">Update Status:</label>
               <select class="form-control" name="updatestatus" id="updatestatus">
